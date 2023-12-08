@@ -17,6 +17,7 @@ body {
   color: white;
   position: fixed;
   width: 100%;
+  max-width: 728px;
   top: 0;
   display: flex;
   align-items: center;
@@ -36,7 +37,7 @@ body {
 
 main {
   padding: 10px;
-  min-height: 80vh;
+  height: 80vh;
   margin: 10vh 0;
   overflow-y: scroll;
   display: flex;
@@ -88,7 +89,7 @@ button {
   background-color: #282c34;
   border: none;
   color: white;
-  padding: 15px 20px; /* Adjusted padding for better aesthetics */
+  padding: 15px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -105,34 +106,28 @@ button:disabled {
   color: #282c34;
   background: white;
   max-width: 400px;
-  margin: 0 auto;
-  border-radius: 10px;
+  margin: 10vh auto 0; /* Adjusted margin for centering */
 }
 
 .sign-out {
   color: #282c34;
   background: white;
   max-width: 400px;
-  margin: 0 auto;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
 .sign-out:hover {
   background: rgb(120, 21, 21);
   cursor: pointer;
   transition: background 0.3s ease;
 }
-
-
-
-ul, li {
+ul,
+li {
   text-align: left;
   list-style: none;
 }
 
 p {
-  max-width: 80%; /* Adjusted width for better readability */
+  max-width: 80%;
   margin-bottom: 12px;
   line-height: 24px;
   padding: 10px;
