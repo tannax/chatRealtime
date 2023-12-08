@@ -1,5 +1,7 @@
 body {
   background-color: #282c34;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
 }
 
 .App {
@@ -15,7 +17,6 @@ body {
   color: white;
   position: fixed;
   width: 100%;
-  max-width: 728px;
   top: 0;
   display: flex;
   align-items: center;
@@ -35,8 +36,8 @@ body {
 
 main {
   padding: 10px;
-  height: 80vh;
-  margin: 10vh 0 10vh;
+  min-height: 80vh;
+  margin: 10vh 0;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
@@ -63,6 +64,7 @@ form {
   max-width: 728px;
   display: flex;
   font-size: 1.5rem;
+  box-sizing: border-box;
 }
 
 form button {
@@ -70,23 +72,23 @@ form button {
   background-color: rgb(56, 56, 143);
 }
 
-
 input {
   line-height: 1.5;
-  width: 100%;
+  width: 80%;
   font-size: 1.5rem;
   background: rgb(58, 58, 58);
   color: white;
   outline: none;
   border: none;
   padding: 0 10px;
+  box-sizing: border-box;
 }
 
 button {
-  background-color: #282c34; /* Green */
+  background-color: #282c34;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 15px 20px; /* Adjusted padding for better aesthetics */
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -99,7 +101,6 @@ button:disabled {
   cursor: not-allowed;
 }
 
-
 .sign-in {
   color: #282c34;
   background: white;
@@ -107,19 +108,16 @@ button:disabled {
   margin: 0 auto;
 }
 
-
-
-
 ul, li {
   text-align: left;
   list-style: none;
 }
 
 p {
-  max-width: 500px;
+  max-width: 80%; /* Adjusted width for better readability */
   margin-bottom: 12px;
   line-height: 24px;
-  padding: 10px 20px;
+  padding: 10px;
   border-radius: 25px;
   position: relative;
   color: white;
@@ -131,7 +129,6 @@ p {
   align-items: center;
 }
 
-/*message p // Breaks the line when the message is too big*/
 .message p {
   word-wrap: break-word;
 }
@@ -145,6 +142,7 @@ p {
   background: #0b93f6;
   align-self: flex-end;
 }
+
 .received p {
   background: #e5e5ea;
   color: black;
@@ -156,4 +154,3 @@ img {
   border-radius: 50%;
   margin: 2px 5px;
 }
-
