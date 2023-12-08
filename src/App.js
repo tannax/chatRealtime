@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './App.css';
 
 import firebase from 'firebase/compat/app';
@@ -63,16 +63,47 @@ function SignOut() {
   )
 }
 
-
 function ChatRoom() {
   const dummy = useRef();
   const messagesRef = firestore.collection('messages');
-  const query = messagesRef.orderBy('createdAt').limit(25);
+  const query = messagesRef.orderBy('createdAt');
 
   const [messages] = useCollectionData(query, { idField: 'id' });
 
   const [formValue, setFormValue] = useState('');
 
+  const [isAppFocused, setIsAppFocused] = useState(true);
+
+  useEffect(() => {
+    const handleFocus = () => setIsAppFocused(true);
+    const handleBlur = () => setIsAppFocused(false);
+
+    window.addEventListener('focus', handleFocus);
+    window.addEventListener('blur', handleBlur);
+
+    return () => {
+      window.removeEventListener('focus', handleFocus);
+      window.removeEventListener('blur', handleBlur);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isAppFocused && messages && messages.length > 0) {
+      const lastMessage = messages[messages.length - 1];
+      const { text, uid } = lastMessage;
+
+      if (uid !== auth.currentUser.uid) {
+        const notification = new Notification('New Message', {
+          body: text,
+        });
+
+        notification.addEventListener('click', () => {
+          // Handle what should happen when the user clicks on the notification
+          // For example, you can focus the chat window
+        });
+      }
+    }
+  }, [isAppFocused, messages]);
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -83,12 +114,13 @@ function ChatRoom() {
       text: formValue,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       uid,
-      photoURL
-    })
+      photoURL,
+    });
 
     setFormValue('');
     dummy.current.scrollIntoView({ behavior: 'smooth' });
-  }
+  };
+
 
   return (<>
     <main>

@@ -37,11 +37,10 @@ body {
 
 main {
   padding: 10px;
-  height: 80vh;
-  margin: 10vh 0;
-  overflow-y: scroll;
   display: flex;
   flex-direction: column;
+  flex-grow: 1; /* Allow main to grow and fill available space */
+  overflow-y: auto; /* Enable scrolling for the main section */
 }
 
 main::-webkit-scrollbar {
@@ -67,6 +66,7 @@ form {
   display: flex;
   font-size: 1.5rem;
   box-sizing: border-box;
+  overflow-y: auto; /* Enable scrolling for the form */
 }
 
 form button {
