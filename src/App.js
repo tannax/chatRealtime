@@ -91,16 +91,23 @@ function ChatRoom() {
     if (!isAppFocused && messages && messages.length > 0) {
       const lastMessage = messages[messages.length - 1];
       const { text, uid } = lastMessage;
-
+  
       if (uid !== auth.currentUser.uid) {
-        const notification = new Notification('New Message', {
-          body: text,
-        });
-
-        notification.addEventListener('click', () => {
-          // Handle what should happen when the user clicks on the notification
-          // For example, you can focus the chat window
-        });
+        // Check if the document is hidden
+        const isDocumentHidden = document.hidden || document.msHidden || document.webkitHidden;
+  
+        // Only show the notification if the document is hidden
+        if (isDocumentHidden) {
+          const notification = new Notification('New Message', {
+            body: text,
+          });
+  
+          notification.addEventListener('click', () => {
+            // Handle what should happen when the user clicks on the notification
+            // For example, focus on the chat window
+            // window.focus();
+          });
+        }
       }
     }
   }, [isAppFocused, messages]);
