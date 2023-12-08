@@ -12,10 +12,10 @@ body {
 
 .App header {
   background-color: #171718;
-  height: 10vh;
+  height: 7vh; /* Reduced height for smaller screens */
   min-height: 50px;
   color: white;
-  position: fixed;
+  position: sticky;
   width: 100%;
   max-width: 728px;
   top: 0;
@@ -30,17 +30,18 @@ body {
 .App section {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  min-height: 100vh;
+  justify-content: flex-start; /* Align messages to the start */
+  height: 90vh; /* Fixed height for messages */
   background-color: rgb(40, 37, 53);
 }
+
 
 main {
   padding: 10px;
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Allow main to grow and fill available space */
-  overflow-y: auto; /* Enable scrolling for the main section */
+  flex-grow: 1;
+  overflow-y: auto;
 }
 
 main::-webkit-scrollbar {
@@ -52,12 +53,10 @@ main::-webkit-scrollbar-track {
 }
 
 main::-webkit-scrollbar-thumb {
-  background: #6649b8;
+  background: purple; /* Change to purple */
 }
 
-
 form {
-  height: 8vh;
   position: fixed;
   bottom: 0;
   background-color: rgb(24, 23, 23);
@@ -66,7 +65,6 @@ form {
   display: flex;
   font-size: 1.5rem;
   box-sizing: border-box;
-  overflow-y: auto; /* Enable scrolling for the form */
 }
 
 form button {
@@ -90,7 +88,7 @@ button {
   background-color: #282c34;
   border: none;
   color: white;
-   padding: 8px 15px;
+  padding: 8px 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -102,6 +100,7 @@ button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
 
 .sign-in {
   color: #282c34;
@@ -167,4 +166,14 @@ img {
   height: 40px;
   border-radius: 50%;
   margin: 2px 5px;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .App header {
+    height: 5vh; /* Further reduce height for very small screens */
+  }
+  form {
+    height: 7vh; /* Reduce form height as well */
+  }
 }
