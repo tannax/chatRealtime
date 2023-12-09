@@ -62,6 +62,8 @@ function SignOut() {
     <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
   )
 }
+
+
 function ChatRoom() {
   const dummy = useRef();
   const messagesRef = firestore.collection('messages');
@@ -78,7 +80,7 @@ function ChatRoom() {
     };
 
     const handleVisibilityChange = () => {
-      if (!document.hidden && messages && messages.length > 0) {
+      if (document.visibilityState === 'hidden' && messages && messages.length > 0) {
         const lastMessage = messages[messages.length - 1];
         const { text, uid } = lastMessage;
 
@@ -99,6 +101,7 @@ function ChatRoom() {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, [messages]);
+
 
   const sendMessage = async (e) => {
     e.preventDefault();
